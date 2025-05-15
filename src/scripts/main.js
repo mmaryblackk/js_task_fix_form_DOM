@@ -6,6 +6,11 @@ const fields = document.querySelectorAll('.field');
 for (const field of fields) {
   const label = document.createElement('label');
   const input = field.querySelector('input');
+
+  if (!input) {
+    continue;
+  }
+
   const inputId = input.getAttribute('id');
   let placeholder = input.getAttribute('name').toLowerCase();
 
@@ -20,10 +25,8 @@ for (const field of fields) {
   }
 
   input.setAttribute('placeholder', placeholder);
-
-  field.prepend(label);
-
   label.setAttribute('for', inputId);
   label.innerText = placeholder.toUpperCase();
   label.classList.add('field-label');
+  field.prepend(label);
 }
